@@ -20,8 +20,3 @@ after_success:
     docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
     docker push cedmartel/webapp:latest;
     fi
-
-deploy:
-  - scp -0 StrictHostKeyChecking=no ./scripts/getReleaseFromDockerHubAndStart.sh u1334019@159.203.33.172
-  - ssh u1334019@159.203.33.172 "chmod +x getReleaseFromDockerHubAndStart.sh"
-  - ssh u1334019@159.203.33.172 "sh getReleaseFromDockerHubAndStart.sh"
