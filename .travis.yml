@@ -14,7 +14,6 @@ script:
 
 after_success:
   - docker build -t webapp:release -f ./dockerfile/release .
-  - docker run -it --rm -p 8080:5000 webapp:release
   - docker tag webapp:release cedmartel/webapp:latest
-  - docker  login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+  - docker login -u=$DOCKER_USERNAME -p=$DOCKER_PASSWORD
   - docker push cedmartel/webapp:latest
