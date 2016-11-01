@@ -12,9 +12,7 @@ script:
   - docker run -it --rm -v $PWD/publish:/root/publish -v $PWD/packages:/root/.nuget/packages webapp:test
   
 after_success:
-  - if [ "$TRAVIS_BRANCH" == "master" ]; then
-      docker build -t webapp:release -f ./dockerfile/release .;
-      docker tag webapp:release cedmartel/webapp:latest;
-      docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
-      docker push cedmartel/webapp:latest;
-    fi
+  - docker build -t webapp:release -f ./dockerfile/release .
+  - docker tag webapp:release cedmartel/webapp:latest
+  - docker docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+  - docker docker push cedmartel/webapp:latest
