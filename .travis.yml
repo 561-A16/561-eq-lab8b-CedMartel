@@ -14,7 +14,6 @@ script:
   
 after_success:
   - print $CD_PATH
-  - cd ./$CD_PATH
   - docker build -t webapp:release -f ./dockerfile/release .
   - docker tag webapp:release cedmartel/webapp:latest
   - docker docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
