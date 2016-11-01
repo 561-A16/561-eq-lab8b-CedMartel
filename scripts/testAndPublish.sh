@@ -5,4 +5,6 @@ dotnet restore
 
 dotnet test ./appweb.unittests
 
-dotnet publish appweb -o /root/publish
+#rm -rf /root/publish/*
+
+dotnet publish appweb --configuration release -o /root/publish
