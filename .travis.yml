@@ -22,4 +22,4 @@ after_success:
   - docker push cedmartel/webapp:latest
   - sshpass -e scp -o StrictHostKeyChecking=no ./scripts/getReleaseFromDockerHubAndStart.sh u1334019@159.203.33.172:/home/u1334019
   - sshpass -e ssh u1334019@159.203.33.172 "chmod +x getReleaseFromDockerHubAndStart.sh"
-  - sshpass -e ssh u1334019@159.203.33.172 "sh getReleaseFromDockerHubAndStart.sh"
+  - sshpass -e ssh u1334019@159.203.33.172 'sh getReleaseFromDockerHubAndStart.sh'
